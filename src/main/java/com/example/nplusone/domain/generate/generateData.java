@@ -1,16 +1,14 @@
 package com.example.nplusone.domain.generate;
 
-import com.example.nplusone.domain.Member;
-import com.example.nplusone.domain.Team;
-import com.example.nplusone.domain.repository.MemberRepository;
-import com.example.nplusone.domain.repository.TeamRepository;
+import com.example.nplusone.domain.member.Member;
+import com.example.nplusone.domain.team.Team;
+import com.example.nplusone.domain.member.repository.MemberRepository;
+import com.example.nplusone.domain.team.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @Repository

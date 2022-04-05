@@ -1,6 +1,6 @@
-package com.example.nplusone.domain.repository;
+package com.example.nplusone.domain.team.repository;
 
-import com.example.nplusone.domain.Team;
+import com.example.nplusone.domain.team.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {

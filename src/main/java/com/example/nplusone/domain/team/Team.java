@@ -1,4 +1,4 @@
-package com.example.nplusone.domain;
+package com.example.nplusone.domain.team;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

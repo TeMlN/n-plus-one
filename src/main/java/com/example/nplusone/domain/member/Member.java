@@ -1,5 +1,6 @@
-package com.example.nplusone.domain;
+package com.example.nplusone.domain.member;
 
+import com.example.nplusone.domain.team.Team;
 import lombok.*;
 
 import javax.persistence.*;
