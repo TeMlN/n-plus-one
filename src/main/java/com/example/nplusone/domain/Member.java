@@ -21,6 +21,6 @@ public class Member {
     private String memberName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team")
+    @JoinColumn(name = "team_id")
     private Team team;
 }
