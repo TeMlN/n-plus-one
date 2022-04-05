@@ -22,8 +22,4 @@ public class Team {
 
     @Column(name = "team_name")
     private String teamName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member")
-    private Member member;
 }
