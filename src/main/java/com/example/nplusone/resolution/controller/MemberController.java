@@ -45,7 +45,7 @@ public class MemberController {
      */
     @GetMapping("/get-members-team/data-jpa")
     public void getMembersTeamDataJpa() {
-        List<Member> members = dataJpaMemberRepository.findAll();
+        List<Member> members = dataJpaMemberRepository.findAllWithDataJpa();
 
         for (Member member : members) {
             System.out.println("member.getMemberName() = " + member.getMemberName()); // 단순 member를 조회하기 때문에 쿼리 1개발생
