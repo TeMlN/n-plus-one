@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface DataJpaMemberRepository extends JpaRepository<Member, Long> {
 
-    @Query("select m from Member m join m.team")
+    @Query("select m from Member m join fetch m.team")
     List<Member> findAllWithDataJpa();
 }
