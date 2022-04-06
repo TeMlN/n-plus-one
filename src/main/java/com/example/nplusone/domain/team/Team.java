@@ -1,17 +1,18 @@
 package com.example.nplusone.domain.team;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.nplusone.domain.member.Member;
+import lombok.*;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
 @Entity
-@Getter @Builder
+@Getter @Builder @Setter
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 public class Team {
@@ -22,4 +23,7 @@ public class Team {
 
     @Column(name = "team_name")
     private String teamName;
+
+    @OneToMany(mappedBy = "team")
+    private List<Member> members = new ArrayList<>();
 }
