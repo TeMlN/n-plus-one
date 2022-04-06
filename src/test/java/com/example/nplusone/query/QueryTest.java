@@ -20,11 +20,7 @@ import java.util.logging.Logger;
 public class QueryTest {
 
     @Autowired
-    TeamRepository teamRepository;
-    @Autowired
     MemberRepository memberRepository;
-    @Autowired
-    EntityManager em;
 
     @Test
     public void findMemberLazy() throws Exception {
