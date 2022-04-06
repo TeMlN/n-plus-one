@@ -1,4 +1,4 @@
-package com.example.nplusone.domain.team.controller;
+package com.example.nplusone.domain.member.controller;
 
 import com.example.nplusone.domain.member.Member;
 import com.example.nplusone.domain.member.repository.MemberRepository;
@@ -20,7 +20,6 @@ import java.util.List;
 @Slf4j
 public class MemberController {
 
-    private final TeamRepository teamRepository;
     private final MemberRepository memberRepository;
 
     @GetMapping("/get-members-team")
@@ -28,8 +27,12 @@ public class MemberController {
         List<Member> members = memberRepository.findAll();
 
         for (Member member : members) {
-            System.out.println("member.getMemberName() = " + member.getMemberName());
+            System.out.println("member.getMemberName() = " + member.getMemberName()); // 단순 member를 조회하기 때문에 쿼리 1개발생
             System.out.println("member.getTeam().getTeamName() = " + member.getTeam().getTeamName());
+            // 지연로딩으로 인해 member의 Team은 프록시로 불러와 지는데
+            // member의 team에 접근을 하면 프록시 객체가 아닌 db에서 다시 불러와진다
+            // 하지만 위 코드를 보면 member 1명마다 그 member의 team을 조회하기 때문에 member한명당 한번의 쿼리가 발생한다 이를 N+1이라 한다
+            // 이를 해결하기 위해선 member들의 team을 전체조회 하는게 해결방법이다
         }
     }
 
