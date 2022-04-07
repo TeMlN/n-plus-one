@@ -2,6 +2,7 @@ package com.example.nplusone.controller;
 
 import com.example.nplusone.domain.member.Member;
 import com.example.nplusone.domain.member.repository.MemberRepository;
+import com.example.nplusone.resolution.entity_graph.EntityGraphMemberRepository;
 import com.example.nplusone.resolution.fetch_join.data_jpa.DataJpaMemberRepository;
 import com.example.nplusone.resolution.fetch_join.querydsl.QueryDslMemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class MemberController {
     private final MemberRepository memberRepository;
     private final DataJpaMemberRepository dataJpaMemberRepository;
     private final QueryDslMemberRepository queryDslMemberRepository;
+    private final EntityGraphMemberRepository entityGraphMemberRepository;
 
     /**
      * N+1 예제
@@ -62,6 +64,20 @@ public class MemberController {
     @GetMapping("/get-members-team/querydsl")
     public void getMembersTeamQuerydsl() {
         List<Member> members = queryDslMemberRepository.findAllWithQueryDsl();
+
+        for (Member member : members) {
+            System.out.println("member.getMemberName() = " + member.getMemberName());
+            System.out.println("member.getTeam().getTeamName() = " + member.getTeam().getTeamName());
+        }
+    }
+
+
+    /**
+     * EntityGraph로 해결하기
+     */
+    @GetMapping("/get-members-team/entity-graph")
+    public void getMembersTeamEntityGraph() {
+        List<Member> members = entityGraphMemberRepository.findAll();
 
         for (Member member : members) {
             System.out.println("member.getMemberName() = " + member.getMemberName());
