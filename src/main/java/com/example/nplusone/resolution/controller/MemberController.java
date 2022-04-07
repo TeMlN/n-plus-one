@@ -3,6 +3,7 @@ package com.example.nplusone.resolution.controller;
 import com.example.nplusone.domain.member.Member;
 import com.example.nplusone.domain.member.repository.MemberRepository;
 import com.example.nplusone.resolution.fetch_join.data_jpa.DataJpaMemberRepository;
+import com.example.nplusone.resolution.fetch_join.querydsl.QueryDslMemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class MemberController {
 
     private final MemberRepository memberRepository;
     private final DataJpaMemberRepository dataJpaMemberRepository;
+    private final QueryDslMemberRepository queryDslMemberRepository;
 
     /**
      * N+1 예제
@@ -48,7 +50,21 @@ public class MemberController {
         List<Member> members = dataJpaMemberRepository.findAllWithDataJpa();
 
         for (Member member : members) {
-            System.out.println("member.getMemberName() = " + member.getMemberName()); // 단순 member를 조회하기 때문에 쿼리 1개발생
+            System.out.println("member.getMemberName() = " + member.getMemberName());
+            System.out.println("member.getTeam().getTeamName() = " + member.getTeam().getTeamName());
+        }
+    }
+
+
+    /**
+     * Querydsl로 해결하기 (fetch join)
+     */
+    @GetMapping("/get-members-team/querydsl")
+    public void getMembersTeamQuerydsl() {
+        List<Member> members = queryDslMemberRepository.findAllWithQueryDsl();
+
+        for (Member member : members) {
+            System.out.println("member.getMemberName() = " + member.getMemberName());
             System.out.println("member.getTeam().getTeamName() = " + member.getTeam().getTeamName());
         }
     }
