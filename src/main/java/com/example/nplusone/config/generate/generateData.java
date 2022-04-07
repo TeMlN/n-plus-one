@@ -1,4 +1,4 @@
-package com.example.nplusone.domain.generate;
+package com.example.nplusone.config.generate;
 
 import com.example.nplusone.domain.member.Member;
 import com.example.nplusone.domain.team.Team;
