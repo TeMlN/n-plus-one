@@ -1,4 +1,4 @@
-package com.example.nplusone.resolution.controller;
+package com.example.nplusone.controller;
 
 import com.example.nplusone.domain.member.Member;
 import com.example.nplusone.domain.member.repository.MemberRepository;
